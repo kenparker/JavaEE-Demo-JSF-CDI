@@ -2,19 +2,25 @@ package com.maggioni.mymemo.controller;
 
 import com.maggioni.mymemo.model.Memo;
 import com.maggioni.mymemo.service.MemoServiceBean;
+import java.io.Serializable;
 
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-@SessionScoped
-@ManagedBean(name = "memoController")
-public class MemoController {
+@ViewScoped
+@Named
+public class MemoController implements Serializable{
+    
+    private static final long serialVersionUID = 8994022512914167890L;
     private Memo memo;
 
-    @EJB
+    @Inject
     private MemoServiceBean memoService;
 
     public MemoController() {

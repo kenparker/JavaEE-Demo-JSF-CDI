@@ -1,12 +1,17 @@
 package com.maggioni.mymemo.data;
 
 import com.maggioni.mymemo.model.Memo;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Singleton;
+import javax.enterprise.context.SessionScoped;
 
-@Singleton
-public class MemoStore {
+
+@SessionScoped
+public class MemoStore implements Serializable{
+    
+    private static final long serialVersionUID = -3258831452772896931L;
     private List<Memo> memos;
 
     public MemoStore() {

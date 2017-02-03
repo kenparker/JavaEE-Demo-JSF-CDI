@@ -6,11 +6,15 @@ import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.transaction.Transactional;
 
-@Stateless
+@RequestScoped
+@Transactional(value=Transactional.TxType.REQUIRED)
 public class MemoServiceBean {
 
-    @EJB
+    @Inject
     private MemoStore memoStore;
 
     public List<Memo> getAllMemos() {
